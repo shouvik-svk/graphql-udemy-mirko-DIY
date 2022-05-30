@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server';
+import { ApolloServer, gql } from 'apollo-server';
 
 const typeDefs = gql`
   type Query {
@@ -6,4 +6,14 @@ const typeDefs = gql`
   }
 `;
 
-console.log(typeDefs);
+const resolvers = {
+  Query: {
+    greeting: () => {
+      'Hello World'
+    }
+  }
+};
+
+const server = new ApolloServer({ typeDefs, resolvers });
+const { url } = await server.listen({ port: 9000 });
+console.log(`Server is running at ${url}`);
