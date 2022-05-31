@@ -1,6 +1,11 @@
 import { ApolloServer, gql } from 'apollo-server';
 
+
 const typeDefs = gql`
+  schema {
+    query: Query
+  }
+
   type Query {
     greeting: String
   }
@@ -8,9 +13,7 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    greeting: () => {
-      'Hello World'
-    }
+    greeting: () => 'Hello World'
   }
 };
 
