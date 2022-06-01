@@ -14,5 +14,6 @@ type Job {
 type Company {
   id: ID!,
   name: String!,
-  description: String
+  description: String,
+  jobs: [Job!]
 }

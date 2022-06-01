@@ -43,7 +43,12 @@ export async function getCompanyById(id) {
     query GetCompanyById($companyId: ID!) {
       company(id: $companyId) {
         name,
-        description
+        description,
+        jobs {
+          id
+          title
+          description
+        }
       }
     }
   `
