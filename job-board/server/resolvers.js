@@ -19,6 +19,9 @@ export const resolvers = {
     },
     deleteJob: (_root, { id }) => {
       return Job.delete(id);
+    },
+    updateJob: (_root, { updateJobInput }) => {
+      return Job.update(updateJobInput);
     }
   },
 
