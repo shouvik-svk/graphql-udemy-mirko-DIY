@@ -16,6 +16,9 @@ export const resolvers = {
   Mutation: {
     createJob: (_root, { createJobInput }) => {
       return Job.create(createJobInput);
+    },
+    deleteJob: (_root, { id }) => {
+      return Job.delete(id);
     }
   },
 
