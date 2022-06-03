@@ -16,5 +16,11 @@
     "companyId": "wvdB54Gqbdp_NZTXK9Tue",
     "title": "Full-Stack Developer",
     "description": "We are looking for a Full-Stack Developer familiar with Node.js, Express, and React."
+  },
+  {
+    "id": "E_CV-uNQdKjvxp2omvGI3",
+    "title": "Fullstack Developer",
+    "description": "We are looking for a fullstack developer with experience in VueJS, NestJS and MongoDB",
+    "companyId": "pVbRRBQtMVw6lUAkj1k43"
   }
 ]
