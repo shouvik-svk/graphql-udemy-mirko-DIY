@@ -117,8 +117,5 @@ Start the server
  
 ## Authors
 
-
-
-![@shouvik-svk](https://github.com/shouvik-svk.png?size=40)
-
-[@shouvik-svk](https://github.com/shouvik-svk)
+<a href="https://github.com/shouvik-svk/graphql-udemy-mirko-DIY/graphs/contributors"><img src="https://images.weserv.nl/?url=avatars.githubusercontent.com/u/32323183?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d0" /></a>
+<a href="https://github.com/shouvik-svk/graphql-udemy-mirko-DIY/graphs/contributors"><img src="https://images.weserv.nl/?url=avatars.githubusercontent.com/u/133967?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d" /></a>
