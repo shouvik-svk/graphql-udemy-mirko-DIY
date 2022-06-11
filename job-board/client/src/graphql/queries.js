@@ -15,8 +15,8 @@ export async function getAllJobs() {
       jobs {
         id,
         title,
-        description
         company {
+          id,
           name
         }
       }
