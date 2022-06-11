@@ -22,7 +22,11 @@ export async function getAllJobs() {
       }
     }
   `
-  const { jobs } = await request(GRAPHQL_URL, query);
+  // With graphql-request client
+  // const { jobs } = await request(GRAPHQL_URL, query);
+
+  // With Apollo Client
+  const { data: { jobs }} = await client.query({ query });
   return jobs;
 }
 
