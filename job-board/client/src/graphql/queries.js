@@ -45,7 +45,13 @@ export async function getJobById(id) {
   `
 
   const variables = { jobId: id };
-  const { job } = await request(GRAPHQL_URL, query, variables);
+
+  // With graphql-request client
+  // const { job } = await request(GRAPHQL_URL, query, variables);
+
+  // With Apollo Client
+  const { data: { job }} = await client.query({ query, variables });
+
   return job;
 }
 
@@ -65,7 +71,13 @@ export async function getCompanyById(id) {
   `
 
   const variables = { companyId: id };
-  const { company } = await request(GRAPHQL_URL, query, variables);
+
+  // With graphql-request client
+  // const { company } = await request(GRAPHQL_URL, query, variables);
+
+  // With Apollo Client
+  const { data: { company }} = await client.query({ query, variables });
+
   return company;
 }
 
