@@ -22,6 +22,7 @@ export const client = new ApolloClient({
 });
 
 // Not required if using useQuery hook
+
 /* export async function getAllJobs() {
   const { data: { jobs }} = await client.query({
     query: queries.QUERY_GET_ALL_JOBS,
@@ -30,14 +31,14 @@ export const client = new ApolloClient({
   return jobs;
 } */
 
-export async function getJobById(id) {
+/* export async function getJobById(id) {
   const variables = { jobId: id };
   const { data: { job }} = await client.query({
     query: queries.QUERY_GET_JOB_BY_ID,
     variables
   });
   return job;
-}
+} */
 
 export async function getCompanyById(id) {
   const variables = { companyId: id };
