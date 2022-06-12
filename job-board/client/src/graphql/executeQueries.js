@@ -5,7 +5,7 @@ import * as mutations from "./mutations";
 
 const GRAPHQL_URL = 'http://localhost:9000/graphql';
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   uri: GRAPHQL_URL,
   cache: new InMemoryCache(),
   defaultOptions: {
@@ -21,13 +21,14 @@ const client = new ApolloClient({
   }
 });
 
-export async function getAllJobs() {
+// Not required if using useQuery hook
+/* export async function getAllJobs() {
   const { data: { jobs }} = await client.query({
     query: queries.QUERY_GET_ALL_JOBS,
-    fetchPolicy: 'cache-first'
+    fetchPolicy: 'network-first'
   });
   return jobs;
-}
+} */
 
 export async function getJobById(id) {
   const variables = { jobId: id };

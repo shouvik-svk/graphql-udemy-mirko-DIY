@@ -8,6 +8,8 @@ import JobBoard from './components/JobBoard';
 import JobDetail from './components/JobDetail';
 import JobForm from './components/JobForm';
 import NavBar from './components/NavBar';
+import { ApolloProvider } from '@apollo/client';
+import { client } from './graphql/executeQueries';
 
 function App() {
   const navigate = useNavigate();
@@ -24,7 +26,7 @@ function App() {
   };
 
   return (
-    <>
+    <ApolloProvider client={client}>
       <NavBar loggedIn={loggedIn} onLogout={handleLogout} />
       <main className="section">
         <Routes>
@@ -45,7 +47,7 @@ function App() {
           />
         </Routes>
       </main>
-    </>
+    </ApolloProvider>
   );
 }
 
