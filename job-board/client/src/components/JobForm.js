@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { createJob } from '../graphql/queries';
+import { createJob } from '../graphql/executeQueries';
 
 function JobForm() {
   const navigate = useNavigate();

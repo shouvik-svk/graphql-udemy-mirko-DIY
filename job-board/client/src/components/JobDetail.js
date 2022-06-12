@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import { getJobById } from '../graphql/queries';
+import { getJobById } from '../graphql/executeQueries';
 
 function JobDetail() {
   const { jobId } = useParams();

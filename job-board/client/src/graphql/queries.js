@@ -1,123 +1,41 @@
-import { gql, ApolloClient, InMemoryCache } from "@apollo/client";
-// import { request } from "graphql-request";
-import { getAccessToken } from '../auth';
+import { gql } from "@apollo/client";
 
-const GRAPHQL_URL = 'http://localhost:9000/graphql';
-
-const client = new ApolloClient({
-  uri: GRAPHQL_URL,
-  cache: new InMemoryCache(),
-  defaultOptions: {
-    query: {
-      fetchPolicy: 'network-only'
-    },
-    mutate: {
-      fetchPolicy: 'network-only'
-    },
-    watchQuery: {
-      fetchPolicy: 'network-only'
-    }
-  }
-});
-
-export async function getAllJobs() {
-  const query = gql`
-    query GetAllJobs {
+export const QUERY_GET_ALL_JOBS = gql`
+   query GetAllJobs {
       jobs {
-        id,
-        title,
-        company {
-          id,
-          name
-        }
+         id
+         title
+         company {
+            id
+            name
+         }
       }
-    }
-  `
-  // With graphql-request client
-  // const { jobs } = await request(GRAPHQL_URL, query);
+   }
+`;
 
-  // With Apollo Client
-  const { data: { jobs }} = await client.query({ query, fetchPolicy: 'no-cache' });
-  return jobs;
-}
-
-export async function getJobById(id) {
-  const query = gql`
-    query GetJobById($jobId: ID!) {
+export const QUERY_GET_JOB_BY_ID = gql`
+   query GetJobById($jobId: ID!) {
       job(id: $jobId) {
-        title
-        description
-        company {
-          id
-          name
-        }
+         title
+         description
+         company {
+            id
+            name
+         }
       }
-    }
-  `
+   }
+`;
 
-  const variables = { jobId: id };
-
-  // With graphql-request client
-  // const { job } = await request(GRAPHQL_URL, query, variables);
-
-  // With Apollo Client
-  const { data: { job }} = await client.query({ query, variables });
-
-  return job;
-}
-
-export async function getCompanyById(id) {
-  const query = gql`
-    query GetCompanyById($companyId: ID!) {
+export const QUERY_GET_COMPANY_BY_ID = gql`
+   query GetCompanyById($companyId: ID!) {
       company(id: $companyId) {
-        name,
-        description,
-        jobs {
-          id
-          title
-          description
-        }
+         name
+         description
+         jobs {
+            id
+            title
+            description
+         }
       }
-    }
-  `
-
-  const variables = { companyId: id };
-
-  // With graphql-request client
-  // const { company } = await request(GRAPHQL_URL, query, variables);
-
-  // With Apollo Client
-  const { data: { company }} = await client.query({ query, variables });
-
-  return company;
-}
-
-export async function createJob(createJobInput) {
-  const mutation = gql`
-    mutation CreateJob($createJobInput: CreateJobInput!) {
-      job: createJob(createJobInput: $createJobInput) {
-        id
-        title
-        description
-        company {
-          id
-          name
-        }
-      }
-    }
-  `
-
-  const variables = { createJobInput: createJobInput };
-
-  // With graphql-request client
-  // const headers = { Authorization: `Bearer ${getAccessToken()}`}
-  // const { job } = await request(GRAPHQL_URL, query, variables, headers);
-
-  // With Apollo Client
-  const context = {
-    headers: { Authorization: `Bearer ${getAccessToken()}`}
-  }
-  const { data: { job }} = await client.mutate({ mutation, variables, context });
-
-  return job;
-}
+   }
+`;

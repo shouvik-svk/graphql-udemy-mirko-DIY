@@ -1,5 +1,5 @@
 import JobList from './JobList';
-import { getAllJobs } from '../graphql/queries';
+import { getAllJobs } from '../graphql/executeQueries';
 import { useEffect, useState } from 'react';
 
 function JobBoard() {
