@@ -60,11 +60,25 @@ export async function createJob(createJobInput) {
     context,
     update: (cache, { data: { job }}) => {
       cache.writeQuery({
-        query: queries.QUERY_GET_ALL_JOBS,
+        query: queries.QUERY_GET_JOB_BY_ID,
         variables: { id: job.id },
         data: { job }
       })
     }
+  });
+
+  return job;
+}
+
+export async function deleteJobById(id) {
+  const variables = { deleteJobId: id };
+  const context = {
+    headers: { Authorization: `Bearer ${getAccessToken()}`}
+  }
+  const { data: { job }} = await client.mutate({
+    mutation: mutations.MUTATION_DELETE_JOB,
+    variables,
+    context,
   });
 
   return job;

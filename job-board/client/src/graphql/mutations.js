@@ -7,6 +7,19 @@ export const MUTATION_CREATE_JOB = gql`
          ...JobDetail,
          description
       }
-      ${fragments.FRAGMENT_JOB_DETAIL}
+   }
+   ${fragments.FRAGMENT_JOB_DETAIL}
+`;
+
+export const MUTATION_DELETE_JOB = gql`
+   mutation DeleteJob($deleteJobId: ID!) {
+      deleteJob(id: $deleteJobId) {
+         id
+         title
+         description
+         company {
+            name
+         }
+      }
    }
 `;
