@@ -1,15 +1,12 @@
 import { gql } from "@apollo/client";
+import * as fragments from "./fragments";
 
 export const MUTATION_CREATE_JOB = gql`
    mutation CreateJob($createJobInput: CreateJobInput!) {
       job: createJob(createJobInput: $createJobInput) {
-         id
-         title
+         ...JobDetail,
          description
-         company {
-            id
-            name
-         }
       }
+      ${fragments.FRAGMENT_JOB_DETAIL}
    }
 `;
