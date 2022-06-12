@@ -40,14 +40,14 @@ export const client = new ApolloClient({
   return job;
 } */
 
-export async function getCompanyById(id) {
+/* export async function getCompanyById(id) {
   const variables = { companyId: id };
   const { data: { company }} = await client.query({
     query: queries.QUERY_GET_COMPANY_BY_ID,
     variables
   });
   return company;
-}
+} */
 
 export async function createJob(createJobInput) {
   const variables = { createJobInput: createJobInput };
