@@ -10,13 +10,13 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
   defaultOptions: {
     query: {
-      fetchPolicy: 'network-only'
+      fetchPolicy: 'cache-first'
     },
     mutate: {
       fetchPolicy: 'network-only'
     },
     watchQuery: {
-      fetchPolicy: 'network-only'
+      fetchPolicy: 'cache-first'
     }
   }
 });
@@ -24,7 +24,7 @@ const client = new ApolloClient({
 export async function getAllJobs() {
   const { data: { jobs }} = await client.query({
     query: queries.QUERY_GET_ALL_JOBS,
-    fetchPolicy: 'network-only'
+    fetchPolicy: 'cache-first'
   });
   return jobs;
 }
@@ -55,7 +55,14 @@ export async function createJob(createJobInput) {
   const { data: { job }} = await client.mutate({
     mutation: mutations.MUTATION_CREATE_JOB,
     variables,
-    context
+    context,
+    update: (cache, { data: { job }}) => {
+      cache.writeQuery({
+        query: queries.QUERY_GET_ALL_JOBS,
+        variables: { id: job.id },
+        data: { job }
+      })
+    }
   });
 
   return job;
