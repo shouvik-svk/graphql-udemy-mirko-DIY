@@ -58,7 +58,7 @@ export async function createJob(createJobInput) {
     context,
     update: (cache, { data: { job }}) => {
       cache.writeQuery({
-        query: queries.QUERY_GET_ALL_JOBS,
+        query: queries.QUERY_GET_JOB_BY_ID,
         variables: { id: job.id },
         data: { job }
       })
