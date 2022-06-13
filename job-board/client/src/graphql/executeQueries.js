@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { getAccessToken } from '../auth';
-import * as queries from "./queries";
+// import * as queries from "./queries";
 import * as mutations from "./mutations";
 
 const GRAPHQL_URL = 'http://localhost:9000/graphql';
@@ -49,7 +49,7 @@ export const client = new ApolloClient({
   return company;
 } */
 
-export async function createJob(createJobInput) {
+/* export async function createJob(createJobInput) {
   const variables = { createJobInput: createJobInput };
   const context = {
     headers: { Authorization: `Bearer ${getAccessToken()}`}
@@ -68,7 +68,7 @@ export async function createJob(createJobInput) {
   });
 
   return job;
-}
+} */
 
 export async function deleteJobById(id) {
   const variables = { deleteJobId: id };
