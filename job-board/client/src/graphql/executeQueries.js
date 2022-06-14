@@ -56,13 +56,24 @@ export async function createJob(createJobInput) {
     mutation: mutations.MUTATION_CREATE_JOB,
     variables,
     context,
-    update: (cache, { data: { job }}) => {
-      cache.writeQuery({
-        query: queries.QUERY_GET_JOB_BY_ID,
-        variables: { jobId: job.id },
-        data: { job }
-      })
-    }
+      update: (cache, { data: { job } }) => {
+        const { jobs } = cache.readQuery({
+           query: queries.QUERY_GET_ALL_JOBS,
+        });
+
+        console.log('Jobs: ', [...jobs, job]);
+
+        cache.writeQuery({
+           query: queries.QUERY_GET_JOB_BY_ID,
+           variables: { jobId: job.id },
+           data: { job },
+        });
+
+        cache.writeQuery({
+           query: queries.QUERY_GET_ALL_JOBS,
+           data: { jobs: [...jobs, job] },
+        });
+     },
   });
 
   return job;
