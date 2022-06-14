@@ -47,7 +47,7 @@ export function useCreateJob() {
         update: (cache, { data: { job } }) => {
            cache.writeQuery({
               query: QUERY_GET_JOB_BY_ID,
-              variables: { id: job.id },
+              variables: { jobId: job.id },
               data: { job },
            });
         },
